@@ -13,7 +13,7 @@
 | `dist_smoke/BassDriver.ZDL`(烟测) | `357B858A…9762BDB`(hash 以重打为准,首刷用) |
 | matcheck(8 参数契约) | **双 PASS**(init 物化 + handler 归一化) |
 | Ziddle 模拟器全曲渲染 | 41343 块、**NaN=0**、peak 0.85/rms 0.215;中位 **~72.7k cycles/块** |
-| 试听 | `out/BassDriver_default_audition.wav`(出厂设置)、`out/BassDriver_dirty_audition.wav`(Drive 80) |
+| 试听 | **`out/BassDriver_AB_default.wav`(干声 10s + 湿声 10s,贝斯)**、`out/BassDriver_AB_dirty.wav`(Drive 80 版);纯湿声旧版 `out/BassDriver_{default,dirty}_audition.wav`;干声参考 `out/bass_audition_dry.wav` |
 | x86 参照渲染 | `out/bddi_v0_{default,clean,dirty,v2}.wav`(同一核心,原生编译) |
 
 ## 目标版本(待最终拍板,默认 V1 后期型)
