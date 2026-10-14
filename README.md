@@ -2,7 +2,19 @@
 
 > 目标:按**电路级白盒建模**复刻 Tech 21 SansAmp Bass Driver DI,做成
 > B1on/G1on 可加载的 ZDL 效果(9 旋钮三相页 + 版本模式开关)。
-> 现状:**资料收集完成**(三版完整 traced 电路图 + 元件值,见下),DSP 未开工。
+> **现状(2026-10-14):v0 完成** —— 核心 DSP、x86 渲染器、ZDL 构建/验证
+> 全链路打通,试听已出;下一步 = 细节校音(对着参考录音/将来对着真机)。
+
+## 交付物(v0,2026-10-14)
+
+| 项 | 状态 |
+|---|---|
+| `dist/BassDriver.ZDL`(真 DSP) | `28CE9EF6521C12A922820694D80FAB2171F06349ADFB9B9CA33961CF4F968FD3` |
+| `dist_smoke/BassDriver.ZDL`(烟测) | `357B858A…9762BDB`(hash 以重打为准,首刷用) |
+| matcheck(8 参数契约) | **双 PASS**(init 物化 + handler 归一化) |
+| Ziddle 模拟器全曲渲染 | 41343 块、**NaN=0**、peak 0.85/rms 0.215;中位 **~72.7k cycles/块** |
+| 试听 | `out/BassDriver_default_audition.wav`(出厂设置)、`out/BassDriver_dirty_audition.wav`(Drive 80) |
+| x86 参照渲染 | `out/bddi_v0_{default,clean,dirty,v2}.wav`(同一核心,原生编译) |
 
 ## 目标版本(待最终拍板,默认 V1 后期型)
 

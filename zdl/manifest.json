@@ -1,0 +1,22 @@
+{
+  "effect_name": "BassDriver",
+  "comment": "SansAmp Bass Driver DI (V1 late) white-box-style replica for the Zoom B1on/G1on. Original DSP modeled stage-by-stage from community-traced schematics (see docs/CIRCUIT_V1_LATE.md); NOT affiliated with Tech 21. 8 knobs: P1 Presence/Drive/Blend, P2 Bass/Treble/Mid, P3 Level/Mode (0=V1 late, mid=V1 early, max=V2).",
+  "audio_func_name": "Fx_AMP_BassDriver",
+  "gid": 4,
+  "gid_comment": "0x04 = AMP category (G1on AMP wrapping, CABI block).",
+  "fxid": 424,
+  "fxid_comment": "0x01A8 in the custom effect range (after AmpNeve 420/422, Reverson 411).",
+  "fxid_version": "1.00",
+  "flags_byte": 1,
+  "params": [
+    {"name": "Presence", "type": "knob", "max": 100, "default": 50, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.5,  "comment": "P1 K1: HF character shelf (~3 kHz), -4..+10 dB."},
+    {"name": "Drive",    "type": "knob", "max": 100, "default": 35, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.35, "comment": "P1 K2: module gain into the 3.3V zener pair."},
+    {"name": "Blend",    "type": "knob", "max": 100, "default": 100, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 1.0, "comment": "P1 K3: dry/processed mix (100% = full SansAmp)."},
+    {"name": "Bass",     "type": "knob", "max": 100, "default": 50, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.5,  "comment": "P2 K1: peaking ~80 Hz (60 Hz in V2), flat at center."},
+    {"name": "Treble",   "type": "knob", "max": 100, "default": 50, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.5,  "comment": "P2 K2: peaking ~3 kHz, flat at center."},
+    {"name": "Mid",      "type": "knob", "max": 100, "default": 50, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.5,  "comment": "P2 K3: V2-mode mid (500 Hz); inactive in V1 modes."},
+    {"name": "Level",    "type": "knob", "max": 100, "default": 60, "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.6,  "comment": "P3 K1: output level."},
+    {"name": "Mode",     "type": "knob", "max": 100, "default": 0,  "audio_min": 0.0, "audio_max": 1.0, "audio_default": 0.0,  "comment": "P3 K2: voicing 0=BD-V1 late / 50=BD-V1 early / 100=BD-V2."}
+  ],
+  "audio_nop": false
+}
