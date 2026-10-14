@@ -35,6 +35,17 @@
 - themanro/ZoomMultistompZDL(语料/构建链/matcheck)、Ziddle(C674x 模拟器)、
   AmpNeve(框架样板)——见 `b1on-firmware-reverse/README.md` 致谢节。
 
+## 五、试听用真实贝斯 DI 录音(非电路资料)
+
+| 文件 | 来源与许可 | 用途 |
+|---|---|---|
+| `references/bass_src/emg_sd.ogg` | Wikimedia Commons:["EMG - Seymour Duncan -bass guitar sound sample"](https://commons.wikimedia.org/wiki/File:EMG_-_Seymour_Duncan_-bass_guitar_sound_sample.ogg),上传者 User:ZngZng,**CC BY-SA 4.0** | A/B 试听的干声来源。判定为直录 DI:左右声道相关 0.989(单声道复制)。取第 1 段(EMG P-X 拾音器,0–11.4 s)→ `tools/make_real_bass_audition.py` 出 `out/bass_real.f32`.wav |
+| (备选)`references/bass_src/pick.ogg` | Commons:["Bass played with a pick"](https://commons.wikimedia.org/wiki/File:Bass_played_with_a_pick.ogg)(Epiphone bass,CC BY 4.0);`finger_am.ogg`(CC BY 2.5);`walk_b.ogg`(CC BY 2.5) | 已下载备查,未采用 |
+
+**许可注意**:CC BY-SA 4.0 为"相同方式共享"——试听产物(A/B WAV)属派生作品,
+**只保存在本地 `out/`(gitignored),不随仓库分发**;`references/` 同样不入 git。
+若将来要公开发布试听,需署名 + 以 CC BY-SA 4.0 分发,或改用 CC0 音源。
+
 ## 待补
 
 - [ ] BDDI V1 后期型**实机干声/湿声对**(标定用;用户暂无真机 → 先用电路仿真+参考录音)
