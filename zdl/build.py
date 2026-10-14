@@ -33,8 +33,9 @@ if not ZDL_ROOT.exists():
     ZDL_ROOT = G1ON / "zoomreverse" / "ZoomMultistompZDL"
 sys.path.insert(0, str(ZDL_ROOT / "build"))
 sys.path.insert(0, str(ZDL_ROOT / "src" / "airwindows" / "common"))
+sys.path.insert(0, str(ROOT / "tools"))
 
-from airwindows_image import make_airwindows_tape_screen  # noqa: E402
+from bddi_cover import make_bddi_screen  # noqa: E402
 from linker import LinkerConfig, link, params_from_manifest  # noqa: E402
 
 TI_ROOT = Path(os.environ.get(
@@ -122,7 +123,10 @@ def main() -> int:
         fxid_version=manifest.get("fxid_version", "1.00").encode("ascii"),
         flags_byte=manifest.get("flags_byte", 0x01),
         audio_nop=manifest.get("audio_nop", False) or args.smoke,
-        screen_image=make_airwindows_tape_screen(name[:6], ""),
+        # anime pixel-art cover (tools/bddi_cover.py); no knob labels drawn --
+        # the chibi + bass use the full frame, firmware still paints the
+        # three value boxes on top while editing.
+        screen_image=make_bddi_screen(),
         # handlers: knobs 1-2 from the stock LineSel blob, 3..8 synthesized
         # clones (the pattern proven by AmpNeve; the AIR knob3 blob is not
         # used -- it hits unimplemented ops in Ziddle).
