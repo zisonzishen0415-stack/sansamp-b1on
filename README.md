@@ -11,7 +11,7 @@
 |---|---|
 | `dist/BassDriver.ZDL`(真 DSP) | `36E6D16BD2755F3AC11C47AEC88DC0E609CE6604A3ED8033D23A2E8F23B5042A` |
 | `dist_smoke/BassDriver.ZDL`(烟测) | `FF88025FA614A3630124808BC7009F15389452204E385EBE6C7AC982A611A67E`(首刷用) |
-| 屏幕封面(二次元像素画) | **用户提供的参考精灵,逐像素复刻**:`tools/extract_ref.py` 从参考截图拟合出 25×28 原生网格(700/700 格干净分类)→ `tools/ref_sprite_grid.py`,`tools/bddi_cover.py` 以 2 倍绘制 + 格级 4×4 Bayer 灰度抖动(K 实心 / R 50% / k·D 75% / P 25%);右侧 `BASS DRIVER` 文字 + ♪/✦。预览 `out/bddi_cover_{preview_8x,device}.png`(device=模拟 1.4× 纵向拉伸 + 固件旋钮值框位置)。参考图留档 `references/user_cover_ref.png`(不入库) |
+| 屏幕封面(二次元像素画) | **用户提供的参考精灵,逐像素复刻**:`tools/extract_ref.py` 从参考截图拟合出 25×28 原生网格(700/700 格干净分类)→ `tools/ref_sprite_grid.py`,`tools/bddi_cover.py` 以 2 倍绘制 + 格级 4×4 Bayer 灰度抖动(K 实心 / R 50% / k·D 75% / P 25%);**纵向按 LCD 1.4× 像素宽高比预压扁**(每 7 格行 → 10 比特行,10/7 节奏),上机后比例与原图一致。右侧 `BASS DRIVER` 文字 + ♪/✦。预览 `out/bddi_cover_{preview_8x,device}.png`(device=模拟 1.4× 纵向拉伸 + 固件旋钮值框位置)。参考图留档 `references/user_cover_ref.png`(不入库) |
 | matcheck(8 参数契约) | **双 PASS**(init 物化 + handler 归一化) |
 | Ziddle 模拟器全曲渲染 | 41343 块、**NaN=0**、peak 0.85/rms 0.215;中位 **~72.7k cycles/块** |
 | 试听 | **`out/BassDriver_AB_default.wav`(干声 10s + 湿声 10s,贝斯)**、`out/BassDriver_AB_dirty.wav`(Drive 80 版);纯湿声旧版 `out/BassDriver_{default,dirty}_audition.wav`;干声参考 `out/bass_audition_dry.wav` |

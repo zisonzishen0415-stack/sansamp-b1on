@@ -41,8 +41,15 @@ from ref_sprite_grid import GRID                            # noqa: E402
 
 INK, PAPER = 1, 0
 
-SPRITE_X, SPRITE_Y = 19, 6      # top-left of the 2x sprite (50 x 56 px)
+SPRITE_X, SPRITE_Y = 19, 4      # top-left of the 2x sprite (50 x 40 px)
 SCALE = 2
+
+# The LCD stretches pixels 1.4x vertically (lcd_geometry.PIXEL_ASPECT), so
+# the sprite is drawn pre-squashed: every 7 source rows take 10 bitmap rows
+# (3 cells at 2 rows + 4 cells at 1 row, phase tuned so the eye row j=10
+# keeps its 2 rows).  28 cells -> 40 rows; on the LCD the chibi comes out
+# with its native ~0.89 width/height proportion.
+VPAT = (2, 1, 2, 1, 2, 1, 1)     # indexed by (row+1) % 7; sums to 10 / 7
 
 # per-class tone, 0..16; whole 2x2 cell blocks are either solid or empty,
 # chosen by a 4x4 Bayer matrix -> chunky, crisp pixel-art halftone
@@ -78,13 +85,16 @@ def _sparkle(c, x, y):
 
 
 def _draw_sprite(c, x0, y0):
+    y = y0
     for j, row in enumerate(GRID):
+        h = VPAT[(j + 1) % 7]                 # pre-squashed row height
         for i, ch in enumerate(row):
             tone = TONES.get(ch, 0)
             if tone <= BAYER4[j % 4][i % 4]:
                 continue                      # this cell stays paper
-            _fill(c, x0 + i * SCALE, y0 + j * SCALE,
-                  x0 + i * SCALE + SCALE - 1, y0 + j * SCALE + SCALE - 1)
+            _fill(c, x0 + i * SCALE, y,
+                  x0 + i * SCALE + SCALE - 1, y + h - 1)
+        y += h
 
 
 def make_bddi_canvas(param_names=None) -> Canvas:
