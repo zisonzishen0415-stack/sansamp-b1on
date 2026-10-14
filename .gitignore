@@ -1,0 +1,11 @@
+# Community reverse-engineering references: kept locally only (original
+# authors mark them non-commercial / unofficial; see docs/SOURCES.md).
+references/
+
+# Build outputs / intermediates
+*.obj
+*.opt
+*.cmd
+dist/
+build/
+out/
